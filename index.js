@@ -51,6 +51,7 @@ newGameButton.addEventListener("click", function() {
 
   deck = createDeck();
   shuffleDeck(deck);
+  dealerCards = [getNextCard(), getNextCard()];
   playerCards = [getNextCard(), getNextCard()];
 
   newGameButton.style.display = "none";
@@ -90,19 +91,91 @@ function getNextCard() {
   return deck.shift();
 }
 
+function getCardNumericValue(card) {
+  switch(card.value) {
+    case "Ace":
+    return 1;
+    case "Ten":
+    return 10;
+    case "Nine":
+    return 9;
+    case "Eight":
+    return 8;
+    case "Seven":
+    return 7;
+    case "Six":
+    return 6;
+    case "Five":
+    return 5;
+    case "Four":
+    return 4;
+    case "Three":
+    return 3;
+    case "Two":
+    return 2;
+    default:
+    return 10;
+  }
+}
+
+function getScore(cardsArray){
+  let score = 0;
+  let hasAce = false;
+  for (let i = 0; i < cardsArray.length; i++) {
+    let card = cardsArray[i];
+    score += getCardNumericValue(card);
+    if (card.value === "Ace") {
+      hasAce = true;
+    }
+  }
+  if (hasAce && score + 10 <= 21) {
+    return score + 10;
+  }
+  return score;
+}
+
+function updateScore() {
+  dealerScore = getScore(dealerCards);
+  playerScore = getScore(playerCards);
+}
+
 function showStatus() {
   if (!gameStarted) {
     textArea.innerText = "Welcome to Blackjack";
     return;
   }
 
-  for (let i = 0; i < deck.length; i++) {
-    textArea.innerText += '\n' + getCardString(deck[i]);
+  let dealerCardString = "";
+  for (let i = 0; i < dealerCards.length; i++) {
+    dealerCardString += getCardString(dealerCards[i]) + "\n";
+  }
+
+  let playerCardString = "";
+  for (let i = 0; i < playerCards.length; i++) {
+    playerCardString += getCardString(playerCards[i]) + "\n";
+  }
+
+  updateScore();
+
+  textArea.innerText = `Dealer has: 
+                        ${dealerCardString}
+                        (Score: ${dealerScore})
+                        
+                        Player has:
+                        ${playerCardString}
+                        (Score: ${playerScore})`;
+
+  if (gameOver) {
+    if (playerWon) {
+      textArea.innerText += "YOU WIN!";
+    } else {
+      textArea.innerText += "DEALER WINS!";
+    }
+
+    newGameButton.style.display = "inline";
+    hitButton.style.display = "none";
+    stayButton.style.display = "none";
   }
 }
 
 console.log("Welcome to Blackjack!");
-console.log("You are dealt: ");
-console.log(
-  ` ${getCardString(playerCards[0])} and ${getCardString(playerCards[1])}`
-);
