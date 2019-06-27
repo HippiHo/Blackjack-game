@@ -7,7 +7,7 @@ console.log("Welcome to Blackjack!");
 
 // Card variables:
 
-let suits = ["Hearts", "Clubs", "Diamonds", "Spades"];
+let suits = [`<img src="./images/heart.svg" alt="Hearts"/>`, `<img src="./images/clubs.svg" alt="Clubs"/>`, `<img src="/images/diamonds.svg" alt="Diamonds">`, `<img src="./images/spades.svg" alt="Spades"/>`];
 let values = [
   "Ace",
   "King",
@@ -68,13 +68,13 @@ hitButton.addEventListener("click", function() {
   playerCards.push(getNextCard());
   checkForEndOfGame();
   showStatus();
-})
+});
 
 stayButton.addEventListener("click", function() {
   gameOver = true;
   checkForEndOfGame();
   showStatus();
-})
+});
 
 // Game functions:
 
@@ -110,33 +110,33 @@ function getNextCard() {
 }
 
 function getCardNumericValue(card) {
-  switch(card.value) {
+  switch (card.value) {
     case "Ace":
-    return 1;
+      return 1;
     case "Ten":
-    return 10;
+      return 10;
     case "Nine":
-    return 9;
+      return 9;
     case "Eight":
-    return 8;
+      return 8;
     case "Seven":
-    return 7;
+      return 7;
     case "Six":
-    return 6;
+      return 6;
     case "Five":
-    return 5;
+      return 5;
     case "Four":
-    return 4;
+      return 4;
     case "Three":
-    return 3;
+      return 3;
     case "Two":
-    return 2;
+      return 2;
     default:
-    return 10;
+      return 10;
   }
 }
 
-function getScore(cardsArray){
+function getScore(cardsArray) {
   let score = 0;
   let hasAce = false;
   for (let i = 0; i < cardsArray.length; i++) {
@@ -179,21 +179,20 @@ function showStatus() {
 
   updateScore();
 
-  textArea.innerText = `Dealer has: 
+  textArea.innerHTML = `<p><b>Dealer has: </b></p>
 
-                        ${dealerCardString}
-                        (Score: ${dealerScore})
-                        
-                        Player has:
-                        
-                        ${playerCardString}
-                        (Score: ${playerScore})`;
+                        <p>${dealerCardString}</p> 
+                        <p>(Score: ${dealerScore})</p>
+                        <br>  
+                        <p><b>Player has: </b></p>
+                        <p>${playerCardString}</p> 
+                        <p>(Score: ${playerScore})</p>`;
 
   if (gameOver) {
     if (playerWon) {
-      textArea.innerText += "\n" + "\n" + "YOU WIN!";
+      textArea.innerHTML += "\n" + "\n" + "YOU WIN!";
     } else {
-      textArea.innerText += "\n" + "\n" + "DEALER WINS!";
+      textArea.innerHTML += "\n" + "\n" + "DEALER WINS!";
     }
 
     newGameButton.style.display = "inline";
@@ -201,5 +200,3 @@ function showStatus() {
     stayButton.style.display = "none";
   }
 }
-
-

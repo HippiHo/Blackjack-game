@@ -3,8 +3,11 @@ html{
   padding:20px;
 }
 
-.container {
+body {
   font-family: 'Cinzel', serif, Helvetica;
+}
+
+.container {
   text-align: center;
   height: 100%;
   margin: 20px;
@@ -19,6 +22,8 @@ html{
   width: 70%;
   margin: 0 auto;
 }
+
+/* Buttons */
 
 .push_button {
   width: 10%;
@@ -196,4 +201,15 @@ html{
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset,
     0 -1px 0 rgba(255, 255, 255, 0.1) inset, 0 4px 0 #1e609a,
     0 4px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Footer */
+
+footer {
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+footer a {
+  text-decoration: none;
 }
