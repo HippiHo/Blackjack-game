@@ -3,6 +3,8 @@
 // By Elise Maschke
 //
 
+console.log("Welcome to Blackjack!");
+
 // Card variables:
 
 let suits = ["Hearts", "Clubs", "Diamonds", "Spades"];
@@ -44,6 +46,8 @@ hitButton.style.display = "none";
 stayButton.style.display = "none";
 showStatus();
 
+// Events:
+
 newGameButton.addEventListener("click", function() {
   gameStarted = true;
   gameOver = false;
@@ -59,6 +63,20 @@ newGameButton.addEventListener("click", function() {
   stayButton.style.display = "inline";
   showStatus();
 });
+
+hitButton.addEventListener("click", function() {
+  playerCards.push(getNextCard());
+  checkForEndOfGame();
+  showStatus();
+})
+
+stayButton.addEventListener("click", function() {
+  gameOver = true;
+  checkForEndOfGame();
+  showStatus();
+})
+
+// Game functions:
 
 function createDeck() {
   let deck = [];
@@ -134,6 +152,10 @@ function getScore(cardsArray){
   return score;
 }
 
+function checkForEndOfGame() {
+  //TODO
+}
+
 function updateScore() {
   dealerScore = getScore(dealerCards);
   playerScore = getScore(playerCards);
@@ -167,9 +189,9 @@ function showStatus() {
 
   if (gameOver) {
     if (playerWon) {
-      textArea.innerText += "YOU WIN!";
+      textArea.innerText += "\n" + "\n" + "YOU WIN!";
     } else {
-      textArea.innerText += "DEALER WINS!";
+      textArea.innerText += "\n" + "\n" + "DEALER WINS!";
     }
 
     newGameButton.style.display = "inline";
@@ -178,4 +200,4 @@ function showStatus() {
   }
 }
 
-console.log("Welcome to Blackjack!");
+
