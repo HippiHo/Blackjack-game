@@ -4,7 +4,7 @@ html{
 }
 
 .container {
-  font-family: "Oswald", Helvetica;
+  font-family: 'Cinzel', serif, Helvetica;
   text-align: center;
   height: 100%;
   margin: 20px;
@@ -16,6 +16,8 @@ html{
   padding: 1rem;
   border: black solid 1px;
   border-radius: 5px;
+  width: 70%;
+  margin: 0 auto;
 }
 
 .push_button {
@@ -24,7 +26,7 @@ html{
   color: #fff;
   text-decoration: none;
   line-height: 43px;
-  font-family: "Oswald", Helvetica;
+  font-weight: bold;
   display: block;
   margin: 10px;
 }

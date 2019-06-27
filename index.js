@@ -180,10 +180,12 @@ function showStatus() {
   updateScore();
 
   textArea.innerText = `Dealer has: 
+
                         ${dealerCardString}
                         (Score: ${dealerScore})
                         
                         Player has:
+                        
                         ${playerCardString}
                         (Score: ${playerScore})`;
 
