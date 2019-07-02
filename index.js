@@ -7,7 +7,12 @@ console.log("Welcome to Blackjack!");
 
 // Card variables:
 
-let suits = [`<img src="./images/heart.svg" alt="Hearts"/>`, `<img src="./images/clubs.svg" alt="Clubs"/>`, `<img src="/images/diamonds.svg" alt="Diamonds">`, `<img src="./images/spades.svg" alt="Spades"/>`];
+let suits = [
+  `<img src="./images/heart.svg" alt="Hearts"/>`,
+  `<img src="./images/clubs.svg" alt="Clubs"/>`,
+  `<img src="/images/diamonds.svg" alt="Diamonds">`,
+  `<img src="./images/spades.svg" alt="Spades"/>`
+];
 let values = [
   "Ace",
   "King",
@@ -153,7 +158,39 @@ function getScore(cardsArray) {
 }
 
 function checkForEndOfGame() {
-  //TODO
+  updateScore();
+
+  if (gameOver) {
+    // Let dealer take cards
+    while (
+      dealerScore < playerScore &&
+      playerScore <= 21 &&
+      dealerScore <= 21
+    ) {
+      dealerCards.push(getNextCard());
+      updateScore();
+    }
+  }
+
+  if (playerScore > 21) {
+    playerWon = false;
+    gameOver = true;
+  } else if (dealerScore > 21) {
+    playerWon = true;
+    gameOver = true;
+  } else if (gameOver) {
+
+      if (playerScore > dealerScore) {
+        playerWon = true;
+      } else {
+        playerWon = false;
+      }
+
+      newGameButton.style.display = "inline";
+      hitButton.style.display = "none";
+      stayButton.style.display = "none";
+
+  }
 }
 
 function updateScore() {
@@ -186,13 +223,14 @@ function showStatus() {
                         <br>  
                         <p><b>Player has: </b></p>
                         <p>${playerCardString}</p> 
-                        <p>(Score: ${playerScore})</p>`;
+                        <p>(Score: ${playerScore})</p>
+                        <br>`;
 
   if (gameOver) {
     if (playerWon) {
-      textArea.innerHTML += "\n" + "\n" + "YOU WIN!";
+      textArea.innerHTML += "\n" + "\n" + "<p><strong>YOU WIN!!!</strong></p>";
     } else {
-      textArea.innerHTML += "\n" + "\n" + "DEALER WINS!";
+      textArea.innerHTML += "\n" + "\n" + "<p><strong>DEALER WINS!!!</strong></p>";
     }
 
     newGameButton.style.display = "inline";

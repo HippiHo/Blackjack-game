@@ -7,6 +7,15 @@ body {
   font-family: 'Cinzel', serif, Helvetica;
 }
 
+p strong {
+  color: red;
+  font-weight: bold;
+  padding: 1rem;
+  background-color: #f0f0f0; 
+  border: dashed black 1px;
+  border-radius: 5px;
+}
+
 .container {
   text-align: center;
   height: 100%;
