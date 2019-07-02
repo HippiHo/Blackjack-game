@@ -10,7 +10,7 @@ console.log("Welcome to Blackjack!");
 let suits = [
   `<img src="./images/heart.svg" alt="Hearts"/>`,
   `<img src="./images/clubs.svg" alt="Clubs"/>`,
-  `<img src="/images/diamonds.svg" alt="Diamonds">`,
+  `<img src="./images/diamonds.svg" alt="Diamonds">`,
   `<img src="./images/spades.svg" alt="Spades"/>`
 ];
 let values = [
