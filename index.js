@@ -185,11 +185,6 @@ function checkForEndOfGame() {
       } else {
         playerWon = false;
       }
-
-      newGameButton.style.display = "inline";
-      hitButton.style.display = "none";
-      stayButton.style.display = "none";
-
   }
 }
 
