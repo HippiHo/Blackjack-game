@@ -213,11 +213,11 @@ function showStatus() {
 
   textArea.innerHTML = `<p><b>Dealer has: </b></p>
 
-                        <p>${dealerCardString}</p> 
+                        <p class="cards">${dealerCardString}</p> 
                         <p>(Score: ${dealerScore})</p>
                         <br>  
                         <p><b>Player has: </b></p>
-                        <p>${playerCardString}</p> 
+                        <p class="cards">${playerCardString}</p> 
                         <p>(Score: ${playerScore})</p>
                         <br>`;
 
