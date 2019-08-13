@@ -201,12 +201,12 @@ function showStatus() {
 
   let dealerCardString = "";
   for (let i = 0; i < dealerCards.length; i++) {
-    dealerCardString += getCardString(dealerCards[i]) + "\n";
+    dealerCardString += getCardString(dealerCards[i]) + "<br>";
   }
 
   let playerCardString = "";
   for (let i = 0; i < playerCards.length; i++) {
-    playerCardString += getCardString(playerCards[i]) + "\n";
+    playerCardString += getCardString(playerCards[i]) + "<br>";
   }
 
   updateScore();
